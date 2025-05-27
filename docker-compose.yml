@@ -1,11 +1,27 @@
 version: '3.8'
 
 services:
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: myflaskapp
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - webnet
+
   web:
     build: .
     container_name: flask_web
     ports:
       - "5000:5000"
+    depends_on:
+      - db
     networks:
       - webnet
 

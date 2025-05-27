@@ -1,5 +1,5 @@
 class Config:
-    MYSQL_HOST = 'localhost'
+    MYSQL_HOST = 'db'
     MYSQL_USER = 'root'
     MYSQL_PASSWORD = 'root'
     MYSQL_DB = 'myflaskapp'
